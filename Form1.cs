@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace LifeCellsKstati{
@@ -16,11 +17,19 @@ namespace LifeCellsKstati{
         }
      
          private void button1_Click(object sender, EventArgs e){
-            
+            _lifeGame.GameStart();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e){
+            _lifeGame.SetCellForFirstTime(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e){
             _lifeGame.SetCellsForFirstTime(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex);
+        }
+
+        private void timer1_Elapsed(object sender, ElapsedEventArgs e){
+            
         }
     }
 }

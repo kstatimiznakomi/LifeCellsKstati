@@ -1,9 +1,16 @@
-﻿namespace LifeCellsKstati{
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace LifeCellsKstati{
     public class Field{
         private int[,] field = new int[10,10];
 
-        public void SetCellsBegin(int x, int y){
+        public void SetCellBegin(int x, int y){
             field[x, y] = 1;
+        }
+        
+        public void SetCellsBegin(int col, int r){
+            field[col, r] = 1;
         }
 
         public void Process(){
