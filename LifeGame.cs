@@ -15,12 +15,30 @@ namespace LifeCellsKstati{
             _field.SetCellsBegin(column, row);
         }
 
-        public void GameStart(){
+        public void GameStop(){
+            isGame = false;
+            _field.ClearField();
+        }
+
+        public void GameStart(DataGridView dataGridView){
             isGame = true;
-            while (isGame){
-                _field.Process();
+            _field.Process();
+            RenderField(dataGridView);
+        }
+
+        public void RenderField(DataGridView dataGridView){
+            for (int i = 1; i < dataGridView.Columns.Count; i++){
+                for (int j = 1; j < dataGridView.Rows.Count; j++){
+                    if (_field.GetField()[i, j] == 1){
+                        dataGridView.Rows[i-1].Cells[j-1].Selected = true;
+                    }
+                    else{
+                        dataGridView.Rows[i-1].Cells[j-1].Selected = false; 
+                    }
+                }
             }
         }
+        
         public void Render(){
             
         }
