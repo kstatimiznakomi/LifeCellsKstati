@@ -20,6 +20,10 @@ namespace LifeCellsKstati{
             _field.ClearField();
         }
 
+        public void ClearField(){
+            _field.ClearField();
+        }
+
         public void GameStart(DataGridView dataGridView){
             isGame = true;
             _field.Process();
@@ -27,20 +31,16 @@ namespace LifeCellsKstati{
         }
 
         public void RenderField(DataGridView dataGridView){
-            for (int i = 1; i < dataGridView.Columns.Count; i++){
-                for (int j = 1; j < dataGridView.Rows.Count; j++){
+            for (int i = 0; i < dataGridView.Columns.Count; i++){
+                for (int j = 0; j < dataGridView.Rows.Count; j++){
                     if (_field.GetField()[i, j] == 1){
-                        dataGridView.Rows[i-1].Cells[j-1].Selected = true;
+                        dataGridView.Rows[i].Cells[j].Selected = true;
                     }
                     else{
-                        dataGridView.Rows[i-1].Cells[j-1].Selected = false; 
+                        dataGridView.Rows[i].Cells[j].Selected = false;
                     }
                 }
             }
-        }
-        
-        public void Render(){
-            
         }
     }
 }

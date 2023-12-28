@@ -9,14 +9,22 @@ namespace LifeCellsKstati{
         public Form1(){
             InitializeComponent();
             SetDataGrid();
+            ClearDataGrid();
+            _lifeGame.ClearField();
             start.Visible = true;
             stop.Visible = false;
         }
 
         void SetDataGrid(){
-            for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 40; j++){
+                dataGridView1.Columns.Add("","");
+            }
+            for (int i = 0; i < 39; i++){
                 dataGridView1.Rows.Add();
             }
+
+            dataGridView1.AutoSize = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
         }
@@ -44,7 +52,7 @@ namespace LifeCellsKstati{
              timer1.Stop();
              stop.Visible = false;
              start.Visible = true;
-             dataGridView1.Enabled = false;
+             dataGridView1.Enabled = true;
          }
          
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e){
@@ -52,7 +60,7 @@ namespace LifeCellsKstati{
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e){
-            _lifeGame.SetCellsForFirstTime(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex);
+            _lifeGame.SetCellForFirstTime(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex);
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
