@@ -13,14 +13,12 @@ namespace LifeCellsKstati{
             stop.Visible = false;
         }
 
-        public DataGridView dataGrid(){
-            return dataGridView1;
-        }
-
         void SetDataGrid(){
             for (int i = 0; i < 10; i++){
                 dataGridView1.Rows.Add();
             }
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
         }
 
         void ClearDataGrid(){

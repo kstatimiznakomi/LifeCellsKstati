@@ -1,7 +1,7 @@
 ﻿
 namespace LifeCellsKstati{
     public class Field{
-        private int[,] field = new int[11,11];
+        private int[,] field = new int[12,12];
 
         public void SetCellBegin(int x, int y){
             field[x, y] = 1;
@@ -34,23 +34,25 @@ namespace LifeCellsKstati{
                             field[i + 1, j + 1] + field[i + 1, j] + field[i + 1, j - 1] + field[i, j - 1] == 3){
                             field[i, j] = 1;
                         }
-                        
-                        if (field[i - 1, j - 1] + field[i - 1, j] + field[i - 1, j + 1] + field[i, j + 1] +
-                            field[i + 1, j + 1] + field[i + 1, j] + field[i + 1, j - 1] + field[i, j - 1] < 2 ||
 
-                            field[i - 1, j - 1] + field[i - 1, j] + field[i - 1, j + 1] + field[i, j + 1] +
-                            field[i + 1, j + 1] + field[i + 1, j] + field[i + 1, j - 1] + field[i, j - 1] > 3
-                           ){
+                        if (i == 1){
                             field[i, j] = 0;
+                            field[field.GetLength(0) - 2, j] = 1;
                         }
-                    }
-                    if (field[i, j] == 1){
-                        if (field[i - 1, j - 1] + field[i - 1, j] + field[i - 1, j + 1] + field[i, j + 1] +
-                            field[i + 1, j + 1] + field[i + 1, j] + field[i + 1, j - 1] + field[i, j - 1] == 2
-                            ||
-                            field[i - 1, j - 1] + field[i - 1, j] + field[i - 1, j + 1] + field[i, j + 1] +
-                            field[i + 1, j + 1] + field[i + 1, j] + field[i + 1, j - 1] + field[i, j - 1] == 3){
-                            field[i, j] = 1;
+                        
+                        if (j == 1){
+                            field[i, j] = 0;
+                            field[i, field.GetLength(1) - 2] = 1;
+                        }
+
+                        if (i > field.GetLength(0) - 2){
+                            field[i, j] = 0;
+                            field[1, j] = 1;
+                        }
+                        
+                        if (j > field.GetLength(1) - 2){
+                            field[i, j] = 0;
+                            field[i, 1] = 1;
                         }
                         
                         if (field[i - 1, j - 1] + field[i - 1, j] + field[i - 1, j + 1] + field[i, j + 1] +
