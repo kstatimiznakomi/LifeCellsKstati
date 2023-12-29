@@ -16,10 +16,10 @@ namespace LifeCellsKstati{
         }
 
         void SetDataGrid(){
-            for (int j = 0; j < 40; j++){
+            for (int j = 0; j < 30; j++){
                 dataGridView1.Columns.Add("","");
             }
-            for (int i = 0; i < 39; i++){
+            for (int i = 0; i < 29; i++){
                 dataGridView1.Rows.Add();
             }
 
@@ -39,7 +39,7 @@ namespace LifeCellsKstati{
         
          private void start_Click(object sender, EventArgs e){
              dataGridView1.Enabled = false;
-             timer1.Interval = 1000;
+             timer1.Interval = 500;
              timer1.Start();
              _lifeGame.GameStart(dataGridView1);
              start.Visible = false;
